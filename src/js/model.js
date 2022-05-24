@@ -70,7 +70,7 @@ export const getInputCityList = async (input) => {
 
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${weatherKEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${weatherKEY}`
     );
 
     if (!response.ok)
@@ -118,7 +118,7 @@ export const getInputCoordinates = async (input) => {
 
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=${weatherKEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=${weatherKEY}`
     );
 
     if (!response.ok)

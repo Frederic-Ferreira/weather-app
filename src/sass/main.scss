@@ -610,6 +610,17 @@ footer {
   font-size: 2.5rem;
   height: 5rem;
   background-color: $header-color;
+  position: relative;
+
+  span {
+    position: absolute;
+    right: 2rem;
+    color: $background-color;
+    font-size: 1.5rem;
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 /* ------------- ANIMATION -------------- */

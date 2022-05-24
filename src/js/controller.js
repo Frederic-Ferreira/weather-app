@@ -100,6 +100,7 @@ const initSpinners = () => {
 };
 
 const init = async () => {
+  console.log('yee');
   initSpinners();
   mainView.addHandlerLang(controlLanguage);
   currentView.addHandlerLoad(controlClientCoordinates);

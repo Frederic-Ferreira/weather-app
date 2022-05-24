@@ -37,11 +37,6 @@ class searchView extends View {
 
       if (i === this._data.length - 1)
         list.lastElementChild.lastElementChild.style.border = 'none';
-
-      if (this._data.length > 4) {
-        list.lastElementChild.style.borderBottomLeftRadius = '20px';
-        list.lastElementChild.style.borderBottomRightRadius = '20px';
-      }
     });
   }
 
@@ -68,7 +63,7 @@ class searchView extends View {
 
           setTimeout(() => {
             dropdown.classList.toggle('hidden');
-          }, 150);
+          }, 200);
         });
     });
   }

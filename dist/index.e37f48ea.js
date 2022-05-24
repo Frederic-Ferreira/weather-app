@@ -603,6 +603,7 @@ const initSpinners = ()=>{
     _weeklyViewDefault.default.renderSpinner();
 };
 const init = async ()=>{
+    console.log('yee');
     initSpinners();
     _mainViewDefault.default.addHandlerLang(controlLanguage);
     _currentViewDefault.default.addHandlerLoad(controlClientCoordinates);
@@ -672,7 +673,7 @@ const getInputCityList = async (input)=>{
     const lang = state.lang === 'fr';
     try {
         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${_config.weatherKEY}`);
-        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard' : 'Something went wrong with the server, please try again ...');
+        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const data = await response.json();
         state.cityList = [];
         data.forEach((city)=>{
@@ -685,7 +686,7 @@ const getInputCityList = async (input)=>{
             state.cityList.push(obj);
         });
     } catch (err) {
-        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...';
+        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...';
     }
 };
 const getCityFromList = (index)=>{
@@ -702,7 +703,7 @@ const getInputCoordinates = async (input)=>{
     const lang = state.lang === 'fr';
     try {
         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=${_config.weatherKEY}`);
-        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard' : 'Something went wrong with the server, please try again ...');
+        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const data = await response.json();
         state.currentCity = {
             name: data[0].name,
@@ -710,14 +711,14 @@ const getInputCoordinates = async (input)=>{
             long: data[0].lon
         };
     } catch (err) {
-        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...';
+        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...';
     }
 };
 const getCurrentWeather = async (lat, long)=>{
     const lang = state.lang === 'fr';
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${_config.weatherKEY}&lang=${state.lang}`);
-        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...');
+        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const data = await response.json();
         state.currentWeather = {
             description: data.weather[0].description,
@@ -734,14 +735,14 @@ const getCurrentWeather = async (lat, long)=>{
             city: data.name
         };
     } catch  {
-        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...';
+        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...';
     }
 };
 const getHourlyWeather = async (lat, long)=>{
     const lang = state.lang === 'fr';
     try {
         const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude=minutely,alerts,current,daily&appid=${_config.weatherKEY}&lang=${state.lang}`);
-        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...');
+        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const { hourly  } = await response.json();
         state.hourlyWeather = [];
         hourly.forEach((hour)=>{
@@ -756,14 +757,14 @@ const getHourlyWeather = async (lat, long)=>{
             state.hourlyWeather.push(obj);
         });
     } catch  {
-        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...';
+        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...';
     }
 };
 const getWeeklyWeather = async (lat, long)=>{
     const lang = state.lang === 'fr';
     try {
         const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,current,alerts&appid=${_config.weatherKEY}&lang=${state.lang}`);
-        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...');
+        if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const { daily  } = await response.json();
         state.weeklyWeather = [];
         daily.forEach((day, i)=>{
@@ -781,7 +782,7 @@ const getWeeklyWeather = async (lat, long)=>{
             }
         });
     } catch  {
-        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard' : 'Something went wrong with the server, please try again ...';
+        throw lang ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...';
     }
 };
 
@@ -22208,10 +22209,10 @@ class searchView extends _viewDefault.default {
             const html = this._generateMarkup(city, i);
             list.insertAdjacentHTML('beforeend', html);
             if (i === this._data.length - 1) list.lastElementChild.lastElementChild.style.border = 'none';
-            if (this._data.length > 4) {
-                list.lastElementChild.style.borderBottomLeftRadius = '20px';
-                list.lastElementChild.style.borderBottomRightRadius = '20px';
-            }
+        // if (this._data.length > 4) {
+        //   list.lastElementChild.style.borderBottomLeftRadius = '20px';
+        //   list.lastElementChild.style.borderBottomRightRadius = '20px';
+        // }
         });
     }
     addHandlerInputChange(handler) {

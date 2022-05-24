@@ -76,7 +76,7 @@ export const getInputCityList = async (input) => {
     if (!response.ok)
       throw Error(
         lang
-          ? 'Le serveur météo a des problèmes, réessayez plus tard'
+          ? 'Le serveur météo a des problèmes, réessayez plus tard ...'
           : 'Something went wrong with the server, please try again ...'
       );
 
@@ -96,7 +96,7 @@ export const getInputCityList = async (input) => {
     });
   } catch (err) {
     throw lang
-      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
       : 'Something went wrong with the server, please try again ...';
   }
 };
@@ -124,7 +124,7 @@ export const getInputCoordinates = async (input) => {
     if (!response.ok)
       throw Error(
         lang
-          ? 'Le serveur météo a des problèmes, réessayez plus tard'
+          ? 'Le serveur météo a des problèmes, réessayez plus tard ...'
           : 'Something went wrong with the server, please try again ...'
       );
 
@@ -137,7 +137,7 @@ export const getInputCoordinates = async (input) => {
     };
   } catch (err) {
     throw lang
-      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
       : 'Something went wrong with the server, please try again ...';
   }
 };
@@ -153,7 +153,7 @@ export const getCurrentWeather = async (lat, long) => {
     if (!response.ok)
       throw Error(
         lang
-          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
           : 'Something went wrong with the server, please try again ...'
       );
 
@@ -175,7 +175,7 @@ export const getCurrentWeather = async (lat, long) => {
     };
   } catch {
     throw lang
-      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
       : 'Something went wrong with the server, please try again ...';
   }
 };
@@ -191,7 +191,7 @@ export const getHourlyWeather = async (lat, long) => {
     if (!response.ok)
       throw Error(
         lang
-          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
           : 'Something went wrong with the server, please try again ...'
       );
 
@@ -212,7 +212,7 @@ export const getHourlyWeather = async (lat, long) => {
     });
   } catch {
     throw lang
-      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
       : 'Something went wrong with the server, please try again ...';
   }
 };
@@ -228,7 +228,7 @@ export const getWeeklyWeather = async (lat, long) => {
     if (!response.ok)
       throw Error(
         lang
-          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+          ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
           : 'Something went wrong with the server, please try again ...'
       );
 
@@ -252,7 +252,7 @@ export const getWeeklyWeather = async (lat, long) => {
     });
   } catch {
     throw lang
-      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard'
+      ? 'Le serveur météo a des problèmes techniques, réessayez plus tard ...'
       : 'Something went wrong with the server, please try again ...';
   }
 };

@@ -1,0 +1,22 @@
+{
+  "name": "weather-app",
+  "browserslist": "> 0.25%, not dead",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.5.0",
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "lodash": "^4.17.21"
+  }
+}

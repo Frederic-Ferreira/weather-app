@@ -1,0 +1,642 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@300;500&family=Scope+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&&display=swap');
+
+$header-color: rgba(252, 180, 47, 0.8);
+$background-color: rgb(125, 175, 233);
+$box-shadow-color: rgb(31, 137, 223);
+$text-color: rgb(77, 77, 77);
+
+$first-color: #a0c2d1;
+$second-color: #b19ac6;
+$third-color: #f1ebf5;
+$fourth-color: #f172a1;
+$fifth-color: #e74397;
+$sixth-color: #7d6859;
+$seventh-color: #afd275;
+
+/* ----------------------- GENERAL ----------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 300;
+  box-sizing: border-box;
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  @include flexColumn();
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --------- SPINNER ---------- */
+
+.spinner-hours,
+.spinner-weeks,
+.spinner-current {
+  height: 100%;
+  width: 100%;
+}
+
+.spinner-weeks {
+  transform: scale(1.5);
+}
+
+.lds-ring {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid rgba(252, 180, 47);
+  border-radius: 50%;
+  text-align: center;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgba(252, 180, 47) transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+/* ----------------------- HEADER ----------------------- */
+
+header {
+  font-family: 'Scope One', serif;
+  background-color: $header-color;
+  color: white;
+  text-shadow: 0.5px 0.5px 0.5px $sixth-color;
+  font-weight: 700;
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 3rem;
+
+  form {
+    position: relative;
+    i {
+      font-size: 2rem;
+      position: absolute;
+      right: 1rem;
+      top: 0.9rem;
+      color: $text-color;
+      text-shadow: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $header-color;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  label {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+  }
+
+  input {
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  .input-wrapper:hover input {
+    border-radius: 20px;
+  }
+
+  .input-wrapper input:focus {
+    border-top: 3px solid $header-color;
+    border-left: 3px solid $header-color;
+    border-right: 3px solid $header-color;
+    border-bottom: 1px solid $text-color;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .input-wrapper:hover input,
+  input:focus {
+    width: 22rem;
+    padding: 0 2rem;
+    animation: ease 0.5s width-input;
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  .row-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    p {
+      font-size: 2.5rem;
+      text-shadow: 0.5px 0.5px 0.5px $sixth-color;
+      margin-right: 1rem;
+      padding-top: 0.25rem;
+    }
+  }
+
+  i {
+    font-size: 5rem;
+    position: relative;
+    bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  /* -------- SLIDER ---------- */
+
+  #choices {
+    @include flexCenter();
+    color: white;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    p {
+      font-family: 'Zen Maru Gothic', sans-serif;
+      font-weight: 400;
+    }
+    #fr {
+      padding: 0 1.75rem;
+    }
+    #eng {
+      padding: 0 0.25rem;
+    }
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196f3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* -------- DROPDOWN ---------- */
+
+  #dropdown {
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    width: 22rem;
+    height: 17rem;
+    border-left: 2px solid $header-color;
+    border-right: 2px solid $header-color;
+    border-bottom: 2px solid $header-color;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    right: 0;
+    top: 100%;
+    overflow: scroll;
+    z-index: 1;
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      &:hover {
+        background-color: $header-color;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: rgba(252, 180, 47, 0.6);
+      }
+    }
+
+    p {
+      padding: 0.6rem 0;
+      width: 75%;
+      margin: 0 auto;
+      font-size: 1.5rem;
+      text-shadow: none;
+      color: $text-color;
+      border-bottom: 1px solid $text-color;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+/* ----------------------- MAIN ----------------------- */
+
+main {
+  background-color: $background-color;
+  position: relative;
+}
+
+.error-message {
+  height: 100%;
+  width: 100%;
+  font-size: 1.75rem;
+  font-weight: 500;
+  text-align: center;
+  @include flexCenter();
+}
+
+#title-today {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  text-shadow: 2px 2px 2px $text-color;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  position: absolute;
+  top: 5rem;
+  right: 30%;
+}
+
+#title-week {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  text-shadow: 2px 2px 2px $text-color;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  position: absolute;
+  top: 50rem;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* --------- PRESENT ---------- */
+
+#present-weather {
+  display: flex;
+  align-items: center;
+  background-color: $background-color;
+  height: 50rem;
+  color: $text-color;
+
+  .now-weather {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    width: 40rem;
+    height: 33rem;
+    margin: 0rem 10rem;
+    padding: 1.5rem;
+    border: 3px solid $header-color;
+    box-shadow: 5px 5px 2px $box-shadow-color;
+    border-radius: 10px;
+    overflow: scroll;
+    flex-wrap: wrap;
+
+    .column-wrapper {
+      @include flexColumn();
+      align-items: center;
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 12%;
+      transform: scale(1.1);
+    }
+
+    .main-infos {
+      width: 50%;
+      position: relative;
+      left: 45%;
+      text-align: center;
+      font-size: 2rem;
+      margin: auto 0;
+      padding: 0 1rem;
+      @include flexColumn();
+
+      i {
+        font-size: 2.5rem;
+      }
+
+      .titles {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 4rem;
+        color: $header-color;
+      }
+
+      h3 {
+        font-weight: 300;
+      }
+
+      span {
+        @include flexCenter();
+        gap: 1rem;
+        font-size: 1.75rem;
+      }
+
+      .rise-set {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 2rem;
+
+        .value {
+          color: $header-color;
+          font-weight: 500;
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .second-categories {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+
+      i,
+      .icon {
+        font-size: 2rem;
+        color: black;
+        font-weight: 300;
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: $box-shadow-color;
+      }
+    }
+  }
+}
+
+/* --------- HOURLY ---------- */
+
+.hourly-weather {
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  margin-right: 5rem;
+  height: 25rem;
+  width: 70rem;
+  padding: 1.5rem;
+  border: 3px solid $header-color;
+  box-shadow: 5px 5px 2px $box-shadow-color;
+  border-radius: 10px;
+  overflow: scroll;
+
+  .hour {
+    @include flexColumn();
+    align-items: center;
+    position: relative;
+    border-right: 2px solid rgba(252, 180, 47, 0.3);
+    padding-right: 1rem;
+
+    img {
+      height: 75%;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      position: absolute;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      position: relative;
+      bottom: 4rem;
+      left: 1rem;
+      margin-bottom: -2.75rem;
+    }
+
+    .smaller-icons {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+
+      .column-wrapper {
+        @include flexColumn();
+        align-items: center;
+      }
+
+      i {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: $box-shadow-color;
+      }
+    }
+  }
+}
+
+/* --------- DAILY ---------- */
+
+#daily-weather {
+  margin-top: 7rem;
+  background-color: $background-color;
+  height: 70rem;
+
+  #daily-container {
+    margin: 0 5rem 0 10rem;
+    background-color: white;
+    height: 53rem;
+    padding: 1.5rem;
+    border: 3px solid $seventh-color;
+    box-shadow: 5px 5px 2px $box-shadow-color;
+    border-radius: 10px;
+    @include flexColumn();
+    gap: 1rem;
+
+    .day {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      align-items: center;
+      height: 5rem;
+      font-size: 1.5rem;
+      position: relative;
+
+      h1 {
+        position: absolute;
+      }
+
+      img {
+        margin-left: 20rem;
+        height: 8rem;
+      }
+
+      .row-wrapper {
+        @include flexCenter();
+        gap: 1rem;
+        font-size: 1.75rem;
+
+        .value,
+        .max,
+        .wind,
+        .rain {
+          font-weight: 500;
+        }
+
+        .value {
+          color: $background-color;
+        }
+
+        .max {
+          color: rgb(252, 146, 47);
+        }
+
+        .rain {
+          color: $box-shadow-color;
+        }
+
+        .wind {
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+/* ------------- FOOTER -------------- */
+
+footer {
+  @include flexCenter();
+  color: $background-color;
+  font-weight: 500;
+  font-size: 2.5rem;
+  height: 5rem;
+  background-color: $header-color;
+}
+
+/* ------------- ANIMATION -------------- */
+
+@keyframes width-input {
+  0% {
+    width: 4rem;
+  }
+  100% {
+    width: 22rem;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

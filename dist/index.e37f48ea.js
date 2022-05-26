@@ -672,7 +672,7 @@ const getClientCoordinates = async ()=>{
 const getInputCityList = async (input)=>{
     const lang = state.lang === 'fr';
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${_config.weatherKEY}`);
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${_config.weatherKEY}`);
         if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const data = await response.json();
         state.cityList = [];
@@ -702,7 +702,7 @@ const updateCurrentCity = (data)=>{
 const getInputCoordinates = async (input)=>{
     const lang = state.lang === 'fr';
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=${_config.weatherKEY}`);
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=${_config.weatherKEY}`);
         if (!response.ok) throw Error(lang ? 'Le serveur météo a des problèmes, réessayez plus tard ...' : 'Something went wrong with the server, please try again ...');
         const data = await response.json();
         state.currentCity = {
@@ -22209,10 +22209,6 @@ class searchView extends _viewDefault.default {
             const html = this._generateMarkup(city, i);
             list.insertAdjacentHTML('beforeend', html);
             if (i === this._data.length - 1) list.lastElementChild.lastElementChild.style.border = 'none';
-        // if (this._data.length > 4) {
-        //   list.lastElementChild.style.borderBottomLeftRadius = '20px';
-        //   list.lastElementChild.style.borderBottomRightRadius = '20px';
-        // }
         });
     }
     addHandlerInputChange(handler) {
@@ -22231,7 +22227,7 @@ class searchView extends _viewDefault.default {
                 const dropdown = this._parentElement.closest('form').nextElementSibling;
                 setTimeout(()=>{
                     dropdown.classList.toggle('hidden');
-                }, 150);
+                }, 200);
             });
         });
     }

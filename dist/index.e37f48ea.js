@@ -580,7 +580,6 @@ const controlClientInput = async (input)=>{
 const controlCityList = async (index)=>{
     try {
         const city = _model.getCityFromList(index);
-        console.log(city);
         _model.updateCurrentCity(city);
         controlWeather();
     } catch (err) {
@@ -603,7 +602,6 @@ const initSpinners = ()=>{
     _weeklyViewDefault.default.renderSpinner();
 };
 const init = async ()=>{
-    console.log('yee');
     initSpinners();
     _mainViewDefault.default.addHandlerLang(controlLanguage);
     _currentViewDefault.default.addHandlerLoad(controlClientCoordinates);
@@ -22225,9 +22223,7 @@ class searchView extends _viewDefault.default {
         evts.forEach((evt)=>{
             this._parentElement.closest('form').addEventListener(evt, ()=>{
                 const dropdown = this._parentElement.closest('form').nextElementSibling;
-                setTimeout(()=>{
-                    dropdown.classList.toggle('hidden');
-                }, 200);
+                dropdown.classList.toggle('hidden');
             });
         });
     }

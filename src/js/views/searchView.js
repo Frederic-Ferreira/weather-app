@@ -60,10 +60,7 @@ class searchView extends View {
         .addEventListener(evt, () => {
           const dropdown =
             this._parentElement.closest('form').nextElementSibling;
-
-          setTimeout(() => {
-            dropdown.classList.toggle('hidden');
-          }, 200);
+          dropdown.classList.toggle('hidden');
         });
     });
   }

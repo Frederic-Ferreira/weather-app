@@ -44,7 +44,7 @@ body {
 }
 
 .hidden {
-  display: none !important;
+  opacity: 0;
 }
 
 /* --------- SPINNER ---------- */
@@ -75,11 +75,11 @@ body {
   position: absolute;
   width: 64px;
   height: 64px;
-  border: 8px solid rgba(252, 180, 47);
+  border: 8px solid rgb(252, 180, 47);
   border-radius: 50%;
   text-align: center;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgba(252, 180, 47) transparent transparent;
+  border-color: rgb(252, 180, 47) transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
@@ -613,6 +613,8 @@ footer {
   position: relative;
 
   span {
+    @include flexCenter();
+    gap: 0.5rem;
     position: absolute;
     right: 2rem;
     color: $background-color;

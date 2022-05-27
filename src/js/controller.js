@@ -69,8 +69,6 @@ const controlCityList = async (index) => {
   try {
     const city = model.getCityFromList(index);
 
-    console.log(city);
-
     model.updateCurrentCity(city);
 
     controlWeather();
@@ -100,7 +98,6 @@ const initSpinners = () => {
 };
 
 const init = async () => {
-  console.log('yee');
   initSpinners();
   mainView.addHandlerLang(controlLanguage);
   currentView.addHandlerLoad(controlClientCoordinates);

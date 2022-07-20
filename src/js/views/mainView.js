@@ -24,8 +24,8 @@ class mainView extends View {
     const fr = lang === 'fr';
 
     input.placeholder = fr
-      ? 'Nom de ville, Code Postal, ...'
-      : "City's name, ZIP Code, ...";
+      ? 'Entrez un nom de ville ...'
+      : 'Enter city name ...';
 
     siteTitle.textContent = fr ? 'Météo' : 'Weather';
 

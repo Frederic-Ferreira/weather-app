@@ -22402,7 +22402,7 @@ class mainView extends _viewDefault.default {
     }
     languageDisplay(lang) {
         const fr = lang === 'fr';
-        input.placeholder = fr ? 'Nom de ville, Code Postal, ...' : "City's name, ZIP Code, ...";
+        input.placeholder = fr ? 'Entrez un nom de ville ...' : 'Enter city name ...';
         siteTitle.textContent = fr ? 'Météo' : 'Weather';
         label.textContent = fr ? 'Rechercher' : 'Search';
         hoursTitle.textContent = fr ? "Aujourd'hui" : 'Today';

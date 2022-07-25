@@ -470,6 +470,7 @@ main {
 .hourly-weather .hour .smaller-icons {
   width: 100%;
   justify-content: space-around;
+  margin-top: auto;
   display: flex;
 }
 
@@ -616,12 +617,10 @@ footer span a {
   }
 
   #present-weather .now-weather {
-    height: 50vh;
     width: 50vw;
   }
 
   .hourly-weather {
-    height: 40vh;
     width: 80vw;
     margin: 0 5rem;
   }
@@ -636,6 +635,20 @@ footer span a {
 }
 
 @media (max-width: 680px) {
+  header .switch {
+    height: 30px;
+    width: 50px;
+  }
+
+  header .slider:before {
+    height: 23px;
+    width: 23px;
+  }
+
+  header input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+
   header h1, header #choices {
     font-size: 2rem;
   }
@@ -644,12 +657,137 @@ footer span a {
     display: none;
   }
 
+  header .input-wrapper:hover input, header input:focus {
+    width: 17rem;
+    animation: width-input-680 .5s;
+  }
+
+  header .input-wrapper input::placeholder {
+    font-size: 1rem;
+  }
+
+  header #dropdown {
+    width: 17rem;
+  }
+
+  #present-weather .now-weather img {
+    transform: none;
+  }
+
+  .hourly-weather .hour img {
+    height: 70%;
+  }
+
   #present-weather .now-weather .main-infos .titles {
     font-size: 1.75rem;
   }
 
   #present-weather .now-weather .main-infos .titles h2 {
     font-size: 2.25rem;
+  }
+
+  #daily-weather #daily-container .day .row-wrapper, #daily-weather #daily-container .day .row-wrapper .wind {
+    font-size: 1.25rem;
+  }
+
+  footer {
+    font-size: 1.5rem;
+  }
+
+  footer span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  header .input-wrapper:hover input, header input:focus {
+    width: 13rem;
+    animation: width-input-580 .5s;
+  }
+
+  header #dropdown {
+    width: 13rem;
+  }
+
+  header #dropdown p {
+    font-size: 1rem;
+  }
+
+  #present-weather .now-weather .main-infos .titles {
+    font-size: 1.5rem;
+  }
+
+  #present-weather .now-weather .main-infos h3, #present-weather .now-weather .main-infos i {
+    font-size: 2rem;
+  }
+
+  #present-weather .now-weather .main-infos .rise-set .value {
+    font-size: 1.5rem;
+  }
+
+  #present-weather .now-weather img {
+    left: -3.3rem;
+    transform: scale(.9);
+  }
+
+  #present-weather .now-weather .second-categories i, #present-weather .now-weather .second-categories p, #present-weather .now-weather .second-categories .icon {
+    font-size: 1.5rem;
+  }
+
+  .hourly-weather .hour img {
+    height: 60%;
+    margin-top: auto;
+  }
+
+  .hourly-weather .hour h1 {
+    bottom: 3rem;
+  }
+
+  #daily-weather #daily-container .day h1 {
+    font-size: 1.5rem;
+  }
+
+  #daily-weather #daily-container .day img {
+    height: 6rem;
+  }
+}
+
+@media (max-width: 450px) {
+  header #choices {
+    display: none;
+  }
+
+  header .input-wrapper:hover input, header input:focus {
+    width: 17rem;
+    animation: width-input-680 .5s;
+  }
+
+  header #dropdown {
+    width: 17rem;
+  }
+
+  header #dropdown p {
+    font-size: 1.25rem;
+  }
+
+  header .input-wrapper input::placeholder {
+    font-size: 1rem;
+  }
+
+  #present-weather .now-weather {
+    width: 70vw;
+  }
+
+  #present-weather #title-today {
+    transform: translateX(50%);
+  }
+
+  #daily-weather #title-week {
+    font-size: 2rem;
+  }
+
+  #daily-weather #daily-container .day .wind, #daily-weather #daily-container .day .bi-wind, footer span {
+    display: none;
   }
 }
 
@@ -660,6 +798,26 @@ footer span a {
 
   100% {
     width: 22rem;
+  }
+}
+
+@keyframes width-input-680 {
+  0% {
+    width: 4rem;
+  }
+
+  100% {
+    width: t;
+  }
+}
+
+@keyframes width-input-580 {
+  0% {
+    width: 4rem;
+  }
+
+  100% {
+    width: 13rem;
   }
 }
 

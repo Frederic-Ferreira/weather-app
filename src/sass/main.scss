@@ -512,6 +512,7 @@ main {
       display: flex;
       width: 100%;
       justify-content: space-around;
+      margin-top: auto;
 
       .column-wrapper {
         @include flexColumn();
@@ -658,14 +659,12 @@ footer {
     }
 
     .now-weather {
-      height: 50vh;
       width: 50vw;
     }
   }
 
   .hourly-weather {
     margin: 0 5rem;
-    height: 40vh;
     width: 80vw;
   }
 
@@ -682,6 +681,22 @@ footer {
 
 @media (max-width: 680px) {
   header {
+    .switch {
+      height: 30px;
+      width: 50px;
+    }
+
+    .slider::before {
+      height: 23px;
+      width: 23px;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(20px);
+      -ms-transform: translateX(20px);
+      transform: translateX(20px);
+    }
+
     h1 {
       font-size: 2rem;
     }
@@ -693,6 +708,27 @@ footer {
     #label {
       display: none;
     }
+
+    .input-wrapper:hover input,
+    input:focus {
+      width: 17rem;
+      animation: ease 0.5s width-input-680;
+    }
+
+    .input-wrapper input::placeholder {
+      font-size: 1rem;
+    }
+
+    #dropdown {
+      width: 17rem;
+    }
+  }
+  #present-weather .now-weather img {
+    transform: none;
+  }
+
+  .hourly-weather .hour img {
+    height: 70%;
   }
 
   #present-weather .now-weather .main-infos .titles {
@@ -701,6 +737,145 @@ footer {
     h2 {
       font-size: 2.25rem;
     }
+  }
+
+  #daily-weather #daily-container .day .row-wrapper {
+    font-size: 1.25rem;
+
+    .wind {
+      font-size: 1.25rem;
+    }
+  }
+
+  footer {
+    font-size: 1.5rem;
+
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  header {
+    .input-wrapper:hover input,
+    input:focus {
+      width: 13rem;
+      animation: ease 0.5s width-input-580;
+    }
+
+    #dropdown {
+      width: 13rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #present-weather .now-weather .main-infos {
+    .titles {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    i {
+      font-size: 2rem;
+    }
+
+    .rise-set .value {
+      font-size: 1.5rem;
+    }
+  }
+
+  #present-weather .now-weather img {
+    transform: scale(0.9);
+    left: -3.3rem;
+  }
+
+  #present-weather .now-weather .second-categories {
+    i,
+    p,
+    .icon {
+      font-size: 1.5rem;
+    }
+  }
+
+  .hourly-weather .hour {
+    img {
+      height: 60%;
+      margin-top: auto;
+    }
+
+    h1 {
+      bottom: 3rem;
+    }
+  }
+
+  #daily-weather #daily-container .day {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      height: 6rem;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+    #choices {
+      display: none;
+    }
+
+    .input-wrapper:hover input,
+    input:focus {
+      width: 17rem;
+      animation: ease 0.5s width-input-680;
+    }
+
+    #dropdown {
+      width: 17rem;
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
+
+    .input-wrapper input::placeholder {
+      font-size: 1rem;
+    }
+  }
+
+  #present-weather {
+    .now-weather {
+      width: 70vw;
+    }
+
+    #title-today {
+      transform: translateX(50%);
+    }
+  }
+
+  #daily-weather {
+    #title-week {
+      font-size: 2rem;
+    }
+
+    #daily-container .day {
+      .wind,
+      .bi-wind {
+        display: none;
+      }
+    }
+  }
+
+  footer span {
+    display: none;
   }
 }
 
@@ -712,6 +887,24 @@ footer {
   }
   100% {
     width: 22rem;
+  }
+}
+
+@keyframes width-input-680 {
+  0% {
+    width: 4rem;
+  }
+  100% {
+    width: t;
+  }
+}
+
+@keyframes width-input-580 {
+  0% {
+    width: 4rem;
+  }
+  100% {
+    width: 13rem;
   }
 }
 

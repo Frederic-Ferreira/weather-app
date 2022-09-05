@@ -12,5 +12,6 @@ export default class View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', html);
+    // ceci est un commentaire pour tester mes abilités git / github
   }
 }
